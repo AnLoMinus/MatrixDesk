@@ -1,0 +1,29 @@
+{
+  "name": "matrixdesk",
+  "private": true,
+  "version": "0.1.0",
+  "main": "app/electron/main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.ts",
+    "electron:dev": "ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
+    "start": "concurrently -k \"npm:dev\" \"wait-on http://localhost:5173 && npm:electron:dev\"",
+    "electron:dev:only": "electron .",
+    "build": "vite --config vite.config.ts build",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.0",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "wait-on": "^7.2.0"
+  }
+}
